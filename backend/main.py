@@ -29,12 +29,23 @@ def take_heartbeat(request: HeartbeatRequest):
     return {"status": "success"}
 
 @app.post("/record_heartbeat")
-def record_heartbeat(date: str, front_camera: str, back_camera: str):
+def record_heartbeat(date: str, heartrate: int, front_camera: str, back_camera: str):
     caption = entry.generate_caption(front_camera, back_camera)
-    result = entry.add_entry(date, caption, front_camera, back_camera)
+    result = entry.add_entry(date, heartrate, caption, front_camera, back_camera)
     if not result:
         return {"error": "Failed to record heartbeat"}
     return {"caption": caption}
+
+@app.post("/get_insights")
+def get_insights(date: str):
+    result = entry.get_insights(date)['results']['data_array']
+    entries = {}
+    for res in result:
+        entries['date'] = res[0]
+        entries['max_heart_rate'] = res[1]
+        entries['total_entries'] = res[2]
+    return entries
+
 
 # To run the app with the correct port on Render
 if __name__ == "__main__":

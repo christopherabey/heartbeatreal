@@ -13,12 +13,12 @@ headers_db = {
   'Content-Type': 'text/plain'
 }
 
-def add_entry(date, caption, front_camera, back_camera):
+def add_entry(date, heartrate, caption, front_camera, back_camera):
     # INSERT INTO heartbeat.default.entries
     # VALUES ('2024-09-14', 'Sample Caption', 'front_camera', 'back_camera');
     payload = {}
     payload['warehouse_id'] = '360d9dd238bf069f'
-    payload['statement'] = f"INSERT INTO heartbeat.default.entries VALUES ('{date}', '{caption}', '{front_camera}, {back_camera}');"
+    payload['statement'] = f"INSERT INTO heartbeat.default.heartbeat VALUES ('{date}', {heartrate}, '{caption}', '{front_camera}, {back_camera}');"
     payload['wait_timeout'] = '30s'
     response = requests.request("POST", url, headers=headers_db, data=json.dumps(payload))
     return True if response.status_code == 200 else False
@@ -29,6 +29,16 @@ def get_entries(date: str):
     payload = {}
     payload['warehouse_id'] = '360d9dd238bf069f'
     payload['statement'] = f"SELECT * FROM heartbeat.default.entries WHERE date == '{date}'"
+    payload['wait_timeout'] = '30s'
+    response = requests.request("POST", url, headers=headers_db, data=json.dumps(payload))
+    return json.loads(response.text)
+
+def get_insights(date: str):
+    # date format: '2024-09-14'
+    # Sample: SELECT * FROM heartbeat.default.daily_insights WHERE date == '2024-09-14'
+    payload = {}
+    payload['warehouse_id'] = '360d9dd238bf069f'
+    payload['statement'] = f"SELECT * FROM heartbeat.default.daily_insights WHERE date == '{date}'"
     payload['wait_timeout'] = '30s'
     response = requests.request("POST", url, headers=headers_db, data=json.dumps(payload))
     return json.loads(response.text)
