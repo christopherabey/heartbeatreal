@@ -18,9 +18,10 @@ def get_entries(date: str):
    entries = {}
    for res in result: #date, caption, image_data
         entries['date'] = res[0]
-        entries['caption'] = res[1]
-        entries['front_camera'] = res[2]
-        entries['back_camera'] = res[3]
+        entries['heartrate'] = res[1]
+        entries['caption'] = res[2]
+        entries['front_camera'] = res[3]
+        entries['back_camera'] = res[4]
    return entries
 
 @app.post("/take_heartbeat")

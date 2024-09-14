@@ -44,9 +44,10 @@ def get_insights(date: str):
     return json.loads(response.text)
     
 def start_heartbeat(heartrate: int):
-    # TODO: send notif 
     logging.debug(f"Received heartrate: {heartrate}")
-    pass
+    payload = {}
+    payload['heartrate'] = heartrate
+    return payload
 
 def generate_caption(front_camera, back_camera):
     caption_generator = llm.CaptionGenerator()
