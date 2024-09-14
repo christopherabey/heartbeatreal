@@ -1,0 +1,705 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FBD770F12C955E2600639FEC /* HeartBeReal Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = FBD770F02C955E2600639FEC /* HeartBeReal Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		FBD770F62C955E2600639FEC /* HeartBeRealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD770F52C955E2600639FEC /* HeartBeRealApp.swift */; };
+		FBD770F82C955E2600639FEC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD770F72C955E2600639FEC /* ContentView.swift */; };
+		FBD770FA2C955E2800639FEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD770F92C955E2800639FEC /* Assets.xcassets */; };
+		FBD770FD2C955E2800639FEC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBD770FC2C955E2800639FEC /* Preview Assets.xcassets */; };
+		FBD771072C955E2800639FEC /* HeartBeReal_Watch_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD771062C955E2800639FEC /* HeartBeReal_Watch_AppTests.swift */; };
+		FBD771112C955E2800639FEC /* HeartBeReal_Watch_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD771102C955E2800639FEC /* HeartBeReal_Watch_AppUITests.swift */; };
+		FBD771132C955E2800639FEC /* HeartBeReal_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD771122C955E2800639FEC /* HeartBeReal_Watch_AppUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FBD770F22C955E2600639FEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBD770E42C955E2600639FEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBD770EF2C955E2600639FEC;
+			remoteInfo = "HeartBeReal Watch App";
+		};
+		FBD771032C955E2800639FEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBD770E42C955E2600639FEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBD770EF2C955E2600639FEC;
+			remoteInfo = "HeartBeReal Watch App";
+		};
+		FBD7710D2C955E2800639FEC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FBD770E42C955E2600639FEC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FBD770EF2C955E2600639FEC;
+			remoteInfo = "HeartBeReal Watch App";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FBD771192C955E2800639FEC /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				FBD770F12C955E2600639FEC /* HeartBeReal Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FB2036652C95DE6200676DE4 /* HeartBeReal Watch AppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "HeartBeReal Watch AppDebug.entitlements"; sourceTree = "<group>"; };
+		FBD770EA2C955E2600639FEC /* HeartBeReal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeartBeReal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBD770F02C955E2600639FEC /* HeartBeReal Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HeartBeReal Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBD770F52C955E2600639FEC /* HeartBeRealApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeRealApp.swift; sourceTree = "<group>"; };
+		FBD770F72C955E2600639FEC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FBD770F92C955E2800639FEC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FBD770FC2C955E2800639FEC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FBD771022C955E2800639FEC /* HeartBeReal Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HeartBeReal Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBD771062C955E2800639FEC /* HeartBeReal_Watch_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeReal_Watch_AppTests.swift; sourceTree = "<group>"; };
+		FBD7710C2C955E2800639FEC /* HeartBeReal Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HeartBeReal Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBD771102C955E2800639FEC /* HeartBeReal_Watch_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeReal_Watch_AppUITests.swift; sourceTree = "<group>"; };
+		FBD771122C955E2800639FEC /* HeartBeReal_Watch_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartBeReal_Watch_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FBD770ED2C955E2600639FEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD770FF2C955E2800639FEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD771092C955E2800639FEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FBD770E32C955E2600639FEC = {
+			isa = PBXGroup;
+			children = (
+				FBD770F42C955E2600639FEC /* HeartBeReal Watch App */,
+				FBD771052C955E2800639FEC /* HeartBeReal Watch AppTests */,
+				FBD7710F2C955E2800639FEC /* HeartBeReal Watch AppUITests */,
+				FBD770EB2C955E2600639FEC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FBD770EB2C955E2600639FEC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FBD770EA2C955E2600639FEC /* HeartBeReal.app */,
+				FBD770F02C955E2600639FEC /* HeartBeReal Watch App.app */,
+				FBD771022C955E2800639FEC /* HeartBeReal Watch AppTests.xctest */,
+				FBD7710C2C955E2800639FEC /* HeartBeReal Watch AppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FBD770F42C955E2600639FEC /* HeartBeReal Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				FB2036652C95DE6200676DE4 /* HeartBeReal Watch AppDebug.entitlements */,
+				FBD770F52C955E2600639FEC /* HeartBeRealApp.swift */,
+				FBD770F72C955E2600639FEC /* ContentView.swift */,
+				FBD770F92C955E2800639FEC /* Assets.xcassets */,
+				FBD770FB2C955E2800639FEC /* Preview Content */,
+			);
+			path = "HeartBeReal Watch App";
+			sourceTree = "<group>";
+		};
+		FBD770FB2C955E2800639FEC /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FBD770FC2C955E2800639FEC /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FBD771052C955E2800639FEC /* HeartBeReal Watch AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				FBD771062C955E2800639FEC /* HeartBeReal_Watch_AppTests.swift */,
+			);
+			path = "HeartBeReal Watch AppTests";
+			sourceTree = "<group>";
+		};
+		FBD7710F2C955E2800639FEC /* HeartBeReal Watch AppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FBD771102C955E2800639FEC /* HeartBeReal_Watch_AppUITests.swift */,
+				FBD771122C955E2800639FEC /* HeartBeReal_Watch_AppUITestsLaunchTests.swift */,
+			);
+			path = "HeartBeReal Watch AppUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FBD770E92C955E2600639FEC /* HeartBeReal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBD7711A2C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal" */;
+			buildPhases = (
+				FBD770E82C955E2600639FEC /* Resources */,
+				FBD771192C955E2800639FEC /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBD770F32C955E2600639FEC /* PBXTargetDependency */,
+			);
+			name = HeartBeReal;
+			productName = HeartBeReal;
+			productReference = FBD770EA2C955E2600639FEC /* HeartBeReal.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		FBD770EF2C955E2600639FEC /* HeartBeReal Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBD771162C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal Watch App" */;
+			buildPhases = (
+				FBD770EC2C955E2600639FEC /* Sources */,
+				FBD770ED2C955E2600639FEC /* Frameworks */,
+				FBD770EE2C955E2600639FEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HeartBeReal Watch App";
+			productName = "HeartBeReal Watch App";
+			productReference = FBD770F02C955E2600639FEC /* HeartBeReal Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		FBD771012C955E2800639FEC /* HeartBeReal Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBD7711D2C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal Watch AppTests" */;
+			buildPhases = (
+				FBD770FE2C955E2800639FEC /* Sources */,
+				FBD770FF2C955E2800639FEC /* Frameworks */,
+				FBD771002C955E2800639FEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBD771042C955E2800639FEC /* PBXTargetDependency */,
+			);
+			name = "HeartBeReal Watch AppTests";
+			productName = "HeartBeReal Watch AppTests";
+			productReference = FBD771022C955E2800639FEC /* HeartBeReal Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FBD7710B2C955E2800639FEC /* HeartBeReal Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FBD771202C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal Watch AppUITests" */;
+			buildPhases = (
+				FBD771082C955E2800639FEC /* Sources */,
+				FBD771092C955E2800639FEC /* Frameworks */,
+				FBD7710A2C955E2800639FEC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FBD7710E2C955E2800639FEC /* PBXTargetDependency */,
+			);
+			name = "HeartBeReal Watch AppUITests";
+			productName = "HeartBeReal Watch AppUITests";
+			productReference = FBD7710C2C955E2800639FEC /* HeartBeReal Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FBD770E42C955E2600639FEC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					FBD770E92C955E2600639FEC = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					FBD770EF2C955E2600639FEC = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					FBD771012C955E2800639FEC = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = FBD770EF2C955E2600639FEC;
+					};
+					FBD7710B2C955E2800639FEC = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = FBD770EF2C955E2600639FEC;
+					};
+				};
+			};
+			buildConfigurationList = FBD770E72C955E2600639FEC /* Build configuration list for PBXProject "HeartBeReal" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FBD770E32C955E2600639FEC;
+			productRefGroup = FBD770EB2C955E2600639FEC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FBD770E92C955E2600639FEC /* HeartBeReal */,
+				FBD770EF2C955E2600639FEC /* HeartBeReal Watch App */,
+				FBD771012C955E2800639FEC /* HeartBeReal Watch AppTests */,
+				FBD7710B2C955E2800639FEC /* HeartBeReal Watch AppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBD770E82C955E2600639FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD770EE2C955E2600639FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBD770FD2C955E2800639FEC /* Preview Assets.xcassets in Resources */,
+				FBD770FA2C955E2800639FEC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD771002C955E2800639FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD7710A2C955E2800639FEC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FBD770EC2C955E2600639FEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBD770F82C955E2600639FEC /* ContentView.swift in Sources */,
+				FBD770F62C955E2600639FEC /* HeartBeRealApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD770FE2C955E2800639FEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBD771072C955E2800639FEC /* HeartBeReal_Watch_AppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FBD771082C955E2800639FEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FBD771132C955E2800639FEC /* HeartBeReal_Watch_AppUITestsLaunchTests.swift in Sources */,
+				FBD771112C955E2800639FEC /* HeartBeReal_Watch_AppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FBD770F32C955E2600639FEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBD770EF2C955E2600639FEC /* HeartBeReal Watch App */;
+			targetProxy = FBD770F22C955E2600639FEC /* PBXContainerItemProxy */;
+		};
+		FBD771042C955E2800639FEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBD770EF2C955E2600639FEC /* HeartBeReal Watch App */;
+			targetProxy = FBD771032C955E2800639FEC /* PBXContainerItemProxy */;
+		};
+		FBD7710E2C955E2800639FEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FBD770EF2C955E2600639FEC /* HeartBeReal Watch App */;
+			targetProxy = FBD7710D2C955E2800639FEC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		FBD771142C955E2800639FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FBD771152C955E2800639FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		FBD771172C955E2800639FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "HeartBeReal Watch App/HeartBeReal Watch AppDebug.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HeartBeReal Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HeartBeReal;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "HeartBeReal needs access to your heart rate data to display your current heart rate.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "HeartBeReal needs access to your heart rate data to display your heart rate in real-time.";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chrisabey.HeartBeReal.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		FBD771182C955E2800639FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HeartBeReal Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HeartBeReal;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "HeartBeReal needs access to your heart rate data to display your current heart rate.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "HeartBeReal needs access to your heart rate data to display your heart rate in real-time.";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKWatchOnly = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chrisabey.HeartBeReal.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
+		FBD7711B2C955E2800639FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				INFOPLIST_KEY_CFBundleDisplayName = HeartBeReal;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chrisabey.HeartBeReal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		FBD7711C2C955E2800639FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				INFOPLIST_KEY_CFBundleDisplayName = HeartBeReal;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chrisabey.HeartBeReal;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FBD7711E2C955E2800639FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisabey.HeartBeReal-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeartBeReal Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HeartBeReal Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		FBD7711F2C955E2800639FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisabey.HeartBeReal-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeartBeReal Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HeartBeReal Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
+		FBD771212C955E2800639FEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisabey.HeartBeReal-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "HeartBeReal Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Debug;
+		};
+		FBD771222C955E2800639FEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = S7X2DU67K5;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.chrisabey.HeartBeReal-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "HeartBeReal Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FBD770E72C955E2600639FEC /* Build configuration list for PBXProject "HeartBeReal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBD771142C955E2800639FEC /* Debug */,
+				FBD771152C955E2800639FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBD771162C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBD771172C955E2800639FEC /* Debug */,
+				FBD771182C955E2800639FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBD7711A2C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBD7711B2C955E2800639FEC /* Debug */,
+				FBD7711C2C955E2800639FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBD7711D2C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBD7711E2C955E2800639FEC /* Debug */,
+				FBD7711F2C955E2800639FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FBD771202C955E2800639FEC /* Build configuration list for PBXNativeTarget "HeartBeReal Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FBD771212C955E2800639FEC /* Debug */,
+				FBD771222C955E2800639FEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FBD770E42C955E2600639FEC /* Project object */;
+}
