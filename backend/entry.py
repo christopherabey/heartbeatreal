@@ -2,6 +2,7 @@ import requests
 import json
 import os
 from dotenv import load_dotenv
+import logging
 
 load_dotenv()
 
@@ -35,6 +36,7 @@ def get_entries(date: str):
     
 def start_heartbeat(heartrate: int):
     # TODO: send notif 
+    logging.debug(f"Received heartrate: {heartrate}")
     pass
 
 if __name__ == '__main__':
