@@ -2,3 +2,5 @@ heartenv/
 backend/__pycache__/
 venv
 .env
+
+mobile/node_modules
