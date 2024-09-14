@@ -14,13 +14,27 @@ def read_root():
 
 @app.post("/get_entries")
 def get_entries(date: str):
-   entry.get_entries(date)
-   return {"status": "success"}
+   result = entry.get_entries(date)['results']['data_array']
+   entries = {}
+   for res in result: #date, caption, image_data
+        entries['date'] = res[0]
+        entries['caption'] = res[1]
+        entries['front_camera'] = res[2]
+        entries['back_camera'] = res[3]
+   return entries
 
 @app.post("/take_heartbeat")
 def take_heartbeat(request: HeartbeatRequest):
     entry.start_heartbeat(request.heartrate)
     return {"status": "success"}
+
+@app.post("/record_heartbeat")
+def record_heartbeat(date: str, front_camera: str, back_camera: str):
+    caption = entry.generate_caption(front_camera, back_camera)
+    result = entry.add_entry(date, caption, front_camera, back_camera)
+    if not result:
+        return {"error": "Failed to record heartbeat"}
+    return {"caption": caption}
 
 # To run the app with the correct port on Render
 if __name__ == "__main__":
