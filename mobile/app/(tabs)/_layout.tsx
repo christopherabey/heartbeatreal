@@ -31,7 +31,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Heartbeats',
+          title: 'Brainbeats',
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon name={focused ? 'heart' : 'heart-outline'} color={color} />
           ),

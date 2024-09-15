@@ -1,25 +1,36 @@
 import React from "react"
-import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 
-export default function BerealLayout({front, back, width, height}: {front: number, back: number, width: number, height: number}) {
+export default function BerealLayout({front, back, width, height}: {front: number|string, back: number|string, width: number, height: number}) {
     return (
         <View style={{
             width: 375,
             justifyContent: 'center',
             position: 'relative', // Allows absolute positioning of child elements
           }}>
-            <Image source={back} style={{
+            {typeof front === 'string' ? (
+              <Image source={{uri: back.toString()}} style={{
+                borderRadius: 20,
+                width: width,
+                height: height,
+              }} />
+            ) : <Image source={Number(back)} style={{
               borderRadius: 20,
               width: width,
               height: height,
-            }} />
+            }} />}
+            
           
             <View style={{
               position: 'absolute',
               top: 0, 
               left: 0, 
             }}>
-              <View><Image source={front} style={styles.alternate_view}></Image></View>
+              <View>{
+                typeof back === 'string' ? (
+                  <Image source={{uri: front.toString()}} style={styles.alternate_view}/>
+                ) : <Image source={Number(front)} style={styles.alternate_view}/>
+                }</View>
             </View>
           
             <View style={{

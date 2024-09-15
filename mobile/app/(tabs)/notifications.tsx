@@ -14,7 +14,6 @@ Notifications.setNotificationHandler({
 });
 
 
-
 async function sendPushNotification(expoPushToken: string) {
   const message = {
     to: expoPushToken,

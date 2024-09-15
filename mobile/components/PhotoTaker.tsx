@@ -2,6 +2,7 @@ import { Camera, CameraType, CameraPictureOptions } from 'expo-camera/legacy';
 import { useState, useRef } from 'react';
 import { Button, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import { useRouter } from 'expo-router';
 
 export default function PhotoTaker() {
     const [type, setType] = useState(CameraType.front);
@@ -9,6 +10,8 @@ export default function PhotoTaker() {
     const [backPhoto, setBackPhoto] = useState<string | null>(null);
     const [frontPhoto, setFrontPhoto] = useState<string | null>(null);
     const cameraRef = useRef<Camera | null>(null);
+
+    const router = useRouter();
   
     if (!permission) {
       return <View />;
@@ -87,7 +90,12 @@ export default function PhotoTaker() {
                           right: 20, 
                         }}>
                             <TouchableOpacity onPress={toggleCameraType}>
-                                <TabBarIcon name={'checkmark-done'} color={"#fff"} />
+                                <TabBarIcon name={'checkmark-done'} color={"#fff"} onPress={() => {
+                                  router.push({
+                                    pathname: '/post',
+                                    params: { front: frontPhoto, back: backPhoto }, 
+                                  })
+                                }}/>
                             </TouchableOpacity>
                         </View>
 
