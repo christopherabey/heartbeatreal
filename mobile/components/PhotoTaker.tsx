@@ -2,6 +2,8 @@ import { Camera, CameraType, CameraPictureOptions } from "expo-camera/legacy";
 import { useState, useRef } from "react";
 import { Buffer } from "buffer"; // Import the Buffer polyfill
 import "react-native-get-random-values";
+import { Platform } from "react-native";
+import * as FileSystem from "expo-file-system";
 
 import {
   Button,
@@ -37,34 +39,44 @@ export default function PhotoTaker() {
     imageUriBack: string
   ) => {
     try {
-      const [responseFront, responseBack] = await Promise.all([
-        fetch(imageUriFront),
-        fetch(imageUriBack),
+      console.log("start");
+      const [frontFile, backFile] = await Promise.all([
+        FileSystem.readAsStringAsync(imageUriFront, {
+          encoding: FileSystem.EncodingType.Base64,
+        }),
+        FileSystem.readAsStringAsync(imageUriBack, {
+          encoding: FileSystem.EncodingType.Base64,
+        }),
       ]);
 
-      const [blobFront, blobBack] = await Promise.all([
-        responseFront.blob(),
-        responseBack.blob(),
-      ]);
-
+      console.log("next");
       const paramsFront = {
         Bucket: "heartbeatreal",
         Key: `pictures/front-${Date.now()}.jpg`,
-        Body: blobFront,
+        Body: Buffer.from(frontFile, "base64"),
         ContentType: "image/jpeg",
       };
 
       const paramsBack = {
         Bucket: "heartbeatreal",
         Key: `pictures/back-${Date.now()}.jpg`,
-        Body: blobBack,
+        Body: Buffer.from(backFile, "base64"),
         ContentType: "image/jpeg",
       };
 
-      await Promise.all([
-        s3.send(new PutObjectCommand(paramsFront)),
-        s3.send(new PutObjectCommand(paramsBack)),
-      ]);
+      try {
+        const frontUploadResult = await s3.send(
+          new PutObjectCommand(paramsFront)
+        );
+        console.log("Front upload result:", frontUploadResult);
+
+        const backUploadResult = await s3.send(
+          new PutObjectCommand(paramsBack)
+        );
+        console.log("Back upload result:", backUploadResult);
+      } catch (error) {
+        console.error("Error during upload:", error);
+      }
 
       console.log("Both images uploaded successfully!");
 
@@ -133,14 +145,10 @@ export default function PhotoTaker() {
         setBackPhoto(photoData.uri);
         setType(CameraType.front);
         // Wait to capture front photo after capturing back photo
-        await takePhoto(CameraType.front);
       } else {
         setFrontPhoto(photoData.uri);
         setType(CameraType.back);
         // Only upload once both photos are captured
-      }
-      if (frontPhoto && backPhoto) {
-        await uploadImageToS3(frontPhoto, backPhoto);
       }
     }
   };
@@ -150,49 +158,49 @@ export default function PhotoTaker() {
       <View style={styles.container}>
         {!backPhoto || !frontPhoto ? (
           <View>
-          <Camera style={styles.camera} type={type} ref={cameraRef}>
-            <View
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                width: 375,
-              }}
-            >
-              <View>
-                <TouchableOpacity style={styles.alternate_view}>
-                  {frontPhoto ? (
-                    <View>
-                      <Image
-                        source={{ uri: frontPhoto }}
-                        style={styles.alternate_view}
-                      ></Image>
-                    </View>
-                  ) : (
-                    <View />
-                  )}
-                </TouchableOpacity>
+            <Camera style={styles.camera} type={type} ref={cameraRef}>
+              <View
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  width: 375,
+                }}
+              >
+                <View>
+                  <TouchableOpacity style={styles.alternate_view}>
+                    {frontPhoto ? (
+                      <View>
+                        <Image
+                          source={{ uri: frontPhoto }}
+                          style={styles.alternate_view}
+                        ></Image>
+                      </View>
+                    ) : (
+                      <View />
+                    )}
+                  </TouchableOpacity>
+                </View>
+                <View style={{ marginTop: 20, marginRight: 20 }}>
+                  <TouchableOpacity onPress={toggleCameraType}>
+                    <TabBarIcon name={"camera-reverse"} color={"#fff"} />
+                  </TouchableOpacity>
+                </View>
               </View>
-              <View style={{ marginTop: 20, marginRight: 20 }}>
-                <TouchableOpacity onPress={toggleCameraType}>
-                  <TabBarIcon name={"camera-reverse"} color={"#fff"} />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Camera>
-          <Text>{caption}</Text>
-          {caption ? (
-            <TouchableOpacity
-              onPress={() => {
-                // go back to home screen
-              }}
-              style={styles.button}
-            >
-              <Text style={styles.text}>View Recordings</Text>
-            </TouchableOpacity>
-          ) : (
-            <View />
-          )}
+            </Camera>
+            <Text>{caption}</Text>
+            {caption ? (
+              <TouchableOpacity
+                onPress={() => {
+                  // go back to home screen
+                }}
+                style={styles.button}
+              >
+                <Text style={styles.text}>View Recordings</Text>
+              </TouchableOpacity>
+            ) : (
+              <View />
+            )}
           </View>
         ) : (
           <View
@@ -234,7 +242,16 @@ export default function PhotoTaker() {
               }}
             >
               <TouchableOpacity onPress={toggleCameraType}>
-                <TabBarIcon name={"checkmark-done"} color={"#fff"} />
+                <TabBarIcon
+                  name={"checkmark-done"}
+                  color={"#fff"}
+                  onPress={async () => {
+                    if (frontPhoto && backPhoto) {
+                      console.log("halsdjflaksjdflakjsdflk");
+                      await uploadImageToS3(frontPhoto, backPhoto);
+                    }
+                  }}
+                />
               </TouchableOpacity>
             </View>
 
