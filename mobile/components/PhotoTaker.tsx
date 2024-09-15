@@ -33,24 +33,71 @@ export default function PhotoTaker() {
     },
   });
 
-  const uploadImageToS3 = async (imageUri, imageType) => {
+  const uploadImageToS3 = async (imageUriFront, imageUriBack) => {
     try {
-      // Fetch the image as a blob
-      const response = await fetch(imageUri);
-      const blob = await response.blob();
+      // Fetch both images as blobs simultaneously
+      const [responseFront, responseBack] = await Promise.all([
+        fetch(imageUriFront),
+        fetch(imageUriBack),
+      ]);
 
-      const params = {
+      const [blobFront, blobBack] = await Promise.all([
+        responseFront.blob(),
+        responseBack.blob(),
+      ]);
+
+      // Set up S3 params for front and back images
+      const paramsFront = {
         Bucket: "heartbeatreal",
-        Key: `pictures/${imageType}-${Date.now()}.jpg`,
-        Body: blob,
+        Key: `pictures/front-${Date.now()}.jpg`,
+        Body: blobFront,
         ContentType: "image/jpeg", // Adjust content type as needed
       };
 
-      const command = new PutObjectCommand(params);
-      await s3.send(command);
-      console.log(`${imageType} image uploaded successfully!`);
+      const paramsBack = {
+        Bucket: "heartbeatreal",
+        Key: `pictures/back-${Date.now()}.jpg`,
+        Body: blobBack,
+        ContentType: "image/jpeg", // Adjust content type as needed
+      };
+
+      // Upload both images to S3 simultaneously
+      const [commandFront, commandBack] = await Promise.all([
+        s3.send(new PutObjectCommand(paramsFront)),
+        s3.send(new PutObjectCommand(paramsBack)),
+      ]);
+
+      console.log("Both images uploaded successfully!");
+
+      // Construct S3 URLs
+      const s3UrlFront = `https://${paramsFront.Bucket}.s3.us-west-2.amazonaws.com/${paramsFront.Key}`;
+      const s3UrlBack = `https://${paramsBack.Bucket}.s3.us-west-2.amazonaws.com/${paramsBack.Key}`;
+
+      // Post both S3 URLs to your server or API
+      const postResponse = await fetch(
+        "https://heartbereal.onrender.com/record_heartbeat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            data: {
+              date: new Date().toISOString(),
+              front_camera: s3UrlFront,
+              back_camera: s3UrlBack,
+            },
+          }),
+        }
+      );
+
+      if (!postResponse.ok) {
+        throw new Error("Failed to send POST request");
+      }
+
+      console.log("URLs posted successfully!");
     } catch (error) {
-      console.log(`Error uploading ${imageType} image:`, error);
+      console.log("Error uploading images:", error);
     }
   };
 
@@ -90,6 +137,8 @@ export default function PhotoTaker() {
         uploadImageToS3(photoData.uri, "front");
         setType(CameraType.back);
       }
+
+      uploadImageToS3(frontPhoto, backPhoto);
     }
   };
 
