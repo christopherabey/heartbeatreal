@@ -2,6 +2,8 @@ import { Camera, CameraType, CameraPictureOptions } from "expo-camera/legacy";
 import { useState, useRef } from "react";
 import { Buffer } from "buffer"; // Import the Buffer polyfill
 import "react-native-get-random-values";
+import { Platform } from "react-native";
+import RNFetchBlob from 'react-native-blob-util';
 
 import {
   Button,
@@ -38,39 +40,39 @@ export default function PhotoTaker() {
   ) => {
     try {
       const [responseFront, responseBack] = await Promise.all([
-        fetch(imageUriFront),
-        fetch(imageUriBack),
+        RNFetchBlob.fetch('GET', imageUriFront),
+        RNFetchBlob.fetch('GET', imageUriBack),
       ]);
-
+  
       const [blobFront, blobBack] = await Promise.all([
-        responseFront.blob(),
+        responseFront.blob(), // Convert response to blob for S3 upload
         responseBack.blob(),
       ]);
-
+  
       const paramsFront = {
         Bucket: "heartbeatreal",
         Key: `pictures/front-${Date.now()}.jpg`,
         Body: blobFront,
         ContentType: "image/jpeg",
       };
-
+  
       const paramsBack = {
         Bucket: "heartbeatreal",
         Key: `pictures/back-${Date.now()}.jpg`,
         Body: blobBack,
         ContentType: "image/jpeg",
       };
-
+  
       await Promise.all([
         s3.send(new PutObjectCommand(paramsFront)),
         s3.send(new PutObjectCommand(paramsBack)),
       ]);
-
+  
       console.log("Both images uploaded successfully!");
-
+  
       const s3UrlFront = `https://${paramsFront.Bucket}.s3.us-west-2.amazonaws.com/${paramsFront.Key}`;
       const s3UrlBack = `https://${paramsBack.Bucket}.s3.us-west-2.amazonaws.com/${paramsBack.Key}`;
-
+  
       const postResponse = await fetch(
         "https://heartbereal.onrender.com/record_heartbeat",
         {
@@ -87,15 +89,15 @@ export default function PhotoTaker() {
           }),
         }
       );
-
+  
       if (!postResponse.ok) {
         throw new Error("Failed to send POST request");
       }
-
+  
       postResponse.json().then((data) => {
         setCaption(data.caption);
       });
-
+  
       console.log("URLs posted successfully!");
     } catch (error) {
       console.log("Error uploading images:", error);
@@ -133,13 +135,10 @@ export default function PhotoTaker() {
         setBackPhoto(photoData.uri);
         setType(CameraType.front);
         // Wait to capture front photo after capturing back photo
-        await takePhoto(CameraType.front);
       } else {
         setFrontPhoto(photoData.uri);
+        setType(CameraType.back)
         // Only upload once both photos are captured
-        if (frontPhoto && backPhoto) {
-          await uploadImageToS3(frontPhoto, backPhoto);
-        }
       }
     }
   };
@@ -233,7 +232,12 @@ export default function PhotoTaker() {
               }}
             >
               <TouchableOpacity onPress={toggleCameraType}>
-                <TabBarIcon name={"checkmark-done"} color={"#fff"} />
+                <TabBarIcon name={"checkmark-done"} color={"#fff"} onPress={async () => {
+                  if (frontPhoto && backPhoto) {
+                    console.log("halsdjflaksjdflakjsdflk")
+                    await uploadImageToS3(frontPhoto, backPhoto);
+                  }
+                }}/>
               </TouchableOpacity>
             </View>
 
