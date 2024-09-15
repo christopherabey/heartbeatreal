@@ -2,6 +2,7 @@ import os
 from fastapi import FastAPI
 import entry
 from pydantic import BaseModel
+import random
 
 app = FastAPI()
 
@@ -15,15 +16,16 @@ def read_root():
 @app.post("/get_entries")
 def get_entries(date: str):
    result = entry.get_entries(date)['result']['data_array']
-   entries = {}
+   entries = []
    for res in result: #date, caption, image_data
-        entries['date'] = res[0]
-        entries['heartrate'] = res[1]
-        entries['caption'] = res[2]
-        entries['front_camera'] = res[3]
-        entries['back_camera'] = res[4]
+        cur = {}
+        entries.append(cur)
+        cur['date'] = res[0]
+        cur['heartrate'] = res[1]
+        cur['caption'] = res[2]
+        cur['front_camera'] = res[3]
+        cur['back_camera'] = res[4]
    return entries
-   return result
 
 @app.post("/take_heartbeat")
 def take_heartbeat(request: HeartbeatRequest):
@@ -31,8 +33,9 @@ def take_heartbeat(request: HeartbeatRequest):
     return {"status": "success"}
 
 @app.post("/record_heartbeat")
-def record_heartbeat(date: str, heartrate: int, front_camera: str, back_camera: str):
+def record_heartbeat(date: str, front_camera: str, back_camera: str):
     caption = entry.generate_caption(front_camera, back_camera)
+    heartrate = random.random() * 25 + 90
     result = entry.add_entry(date, heartrate, caption, front_camera, back_camera)
     if not result:
         return {"error": "Failed to record heartbeat"}

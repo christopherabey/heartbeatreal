@@ -18,9 +18,11 @@ def add_entry(date, heartrate, caption, front_camera, back_camera):
     # VALUES ('2024-09-14', 'Sample Caption', 'front_camera', 'back_camera');
     payload = {}
     payload['warehouse_id'] = '360d9dd238bf069f'
-    payload['statement'] = f"INSERT INTO heartbeat.default.heartbeat VALUES ('{date}', {heartrate}, '{caption}', '{front_camera}, {back_camera}');"
+    payload['statement'] = f"INSERT INTO heartbeat.default.heartbeat VALUES ('{date}', {heartrate}, ?, '{front_camera}', '{back_camera}');"
+    payload['parameters'] =[{'caption': caption}]
     payload['wait_timeout'] = '30s'
     response = requests.request("POST", url, headers=headers_db, data=json.dumps(payload))
+    print(response.text)
     return True if response.status_code == 200 else False
 
 def get_entries(date: str):
