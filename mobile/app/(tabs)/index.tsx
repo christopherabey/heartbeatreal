@@ -5,6 +5,19 @@ import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from 'react-nati
 import FeedItem from '@/components/FeedItem';
 import { sendPushNotification, registerForPushNotificationsAsync } from '../notifications';
 import { useRouter } from 'expo-router';
+import { FeedData } from '@/classes/FeedData';
+
+type FeedItemData = {
+  caption: string,
+  bpm: number
+  brain_freq: number,
+  user: User
+}
+
+type User = {
+  profile_pic: string,
+  name: string
+}
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -20,6 +33,7 @@ export default function ScrollableComponent() {
   const [notification, setNotification] = useState<Notifications.Notification | undefined>(
     undefined
   );
+  const [posts, setPosts] = useState<FeedData[]>([]);
   const notificationListener = useRef<Notifications.Subscription>();
   const responseListener = useRef<Notifications.Subscription>();
 
@@ -50,13 +64,7 @@ export default function ScrollableComponent() {
     profile_pic: pfp,
     name: "Sarina Li"
   }
-  const sample_data = {
-    caption: "what if i drank blue bull instead",
-    bpm: 100,
-    brain_freq: 120,
-    user: sample_user
-  }
-
+  
   let config = {
     method: 'post',
     maxBodyLength: Infinity,
@@ -67,7 +75,19 @@ export default function ScrollableComponent() {
   useEffect(() => {
     axios.request(config)
     .then((response) => {
-      console.log(JSON.stringify(response.data));
+      const feedPosts = response.data.map((item: any) => {
+        return new FeedData(
+          item.back_camera, 
+          item.caption, 
+          item.date,
+          item.front_camera,  
+          item.heartrate, 
+          undefined,         
+          sample_user        
+        );
+      });
+
+      setPosts(feedPosts);
     })
     .catch((error) => {
       console.log(error);
@@ -80,12 +100,24 @@ export default function ScrollableComponent() {
       <View style={styles.viewContainer}>
         <Text style={styles.headerText}>Today's Brainbeats</Text>
         <TouchableOpacity
+        style={{width: 40, height: 20}}
         onPress={async () => {
           await sendPushNotification(expoPushToken);
         }}
-      ><Text>asdf</Text></TouchableOpacity>
+      ></TouchableOpacity>
         <View style={{width:375, flex: 1, justifyContent: "center", alignContent: "center"}}>
-          <FeedItem front={front} back={back} width={340} height={500} data={sample_data}></FeedItem>
+        {
+          posts.map((post, index) => (
+            <FeedItem
+              key={index} // Use a unique key for each item in the list
+              front={post.front}
+              back={post.back}
+              width={340}
+              height={500}
+              data={post.data} // Pass the entire post object or a specific part of it
+            />
+          ))
+        }
         </View>
       </View>
     </ScrollView>

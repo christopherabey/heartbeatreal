@@ -16,7 +16,7 @@ type User = {
 export default function FeedItem({front, back, width, height, data}: {front: number|string, back: number|string, width: number, height: number, data: FeedItemData}) {
     
     return (
-        <View style={{ justifyContent: "center", alignItems: "center"}}>
+        <View style={{ justifyContent: "center", alignItems: "center", marginBottom: 20}}>
             <View style={{
                 width: 375,
                 justifyContent: "space-between",

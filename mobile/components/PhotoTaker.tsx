@@ -20,6 +20,7 @@ export default function PhotoTaker() {
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [backPhoto, setBackPhoto] = useState<string | null>(null);
   const [frontPhoto, setFrontPhoto] = useState<string | null>(null);
+  const [caption, setCaption] = useState<string>("");
   const cameraRef = useRef<Camera | null>(null);
   const router = useRouter();
 
@@ -93,6 +94,10 @@ export default function PhotoTaker() {
         throw new Error("Failed to send POST request");
       }
 
+      postResponse.json().then((data) => {
+        setCaption(data.caption);
+      });
+
       console.log("URLs posted successfully!");
     } catch (error) {
       console.log("Error uploading images:", error);
@@ -136,7 +141,7 @@ export default function PhotoTaker() {
         setType(CameraType.back);
       }
 
-      uploadImageToS3(frontPhoto, backPhoto);
+      uploadImageToS3(frontPhoto!, backPhoto!);
     }
   };
 
@@ -144,6 +149,7 @@ export default function PhotoTaker() {
     <View style={styles.body}>
       <View style={styles.container}>
         {!backPhoto || !frontPhoto ? (
+          <View>
           <Camera style={styles.camera} type={type} ref={cameraRef}>
             <View
               style={{
@@ -174,6 +180,20 @@ export default function PhotoTaker() {
               </View>
             </View>
           </Camera>
+          <Text>{caption}</Text>
+          {caption ? (
+            <TouchableOpacity
+              onPress={() => {
+                // go back to home screen
+              }}
+              style={styles.button}
+            >
+              <Text style={styles.text}>View Recordings</Text>
+            </TouchableOpacity>
+          ) : (
+            <View />
+          )}
+          </View>
         ) : (
           <View
             style={{
@@ -213,7 +233,7 @@ export default function PhotoTaker() {
                 right: 20,
               }}
             >
-              <TouchableOpacity onPress={toggleCameraType}>
+              <TouchableOpacity onPress={()=>{uploadImageToS3(frontPhoto, backPhoto)}}>
                 <TabBarIcon
                   name={"checkmark-done"}
                   color={"#fff"}
