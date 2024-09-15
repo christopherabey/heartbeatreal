@@ -19,7 +19,6 @@ export default function BerealLayout({front, back, width, height}: {front: numbe
               width: width,
               height: height,
             }} />}
-            
           
             <View style={{
               position: 'absolute',

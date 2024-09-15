@@ -7,11 +7,11 @@ type Data = {
     caption: string;
     bpm: number;
     brain_freq: number;
-    user: User
+    user: User;
+    date: string;
 }
 
 export class FeedData {
-    date: string;
     data: Data
     brain_freq: number;
     front: string;
@@ -26,13 +26,13 @@ export class FeedData {
         brain_freq: number = 99,
         user: User
     ) {
-        this.date = date;
         this.brain_freq = brain_freq;
         this.data = {
             caption: caption,
             bpm: bpm,
             brain_freq: brain_freq,
-            user: user
+            user: user,
+            date: date
         }
         this.front = front;
         this.back = back;

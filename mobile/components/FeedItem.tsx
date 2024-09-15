@@ -1,11 +1,14 @@
 import BerealLayout from "./BerealLayout"
 import { View, Text, Image } from "react-native"
+import axios from 'axios';
+import { useEffect } from "react";
 
 type FeedItemData = {
     caption: string,
     bpm: number
     brain_freq: number,
-    user: User
+    user: User,
+    date: string
 }
 
 type User = {
@@ -14,7 +17,6 @@ type User = {
 }
 
 export default function FeedItem({front, back, width, height, data}: {front: number|string, back: number|string, width: number, height: number, data: FeedItemData}) {
-    
     return (
         <View style={{ justifyContent: "center", alignItems: "center", marginBottom: 20}}>
             <View style={{
@@ -59,7 +61,7 @@ export default function FeedItem({front, back, width, height, data}: {front: num
             </View>
             <BerealLayout front={front} back={back} height={height} width={width} />
             <View style={{justifyContent: "flex-start", alignItems: "flex-start", width: 375, paddingLeft: 20, paddingTop: 20}}>
-                <Text style={{color: "#7a7a7a"}}>9:40AM</Text>
+                <Text style={{color: "#7a7a7a"}}>{data.date}</Text>
                 <Text style={{color: "white"}}>{data.caption}</Text>
             </View>
         </View>

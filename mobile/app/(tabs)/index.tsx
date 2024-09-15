@@ -7,13 +7,6 @@ import { sendPushNotification, registerForPushNotificationsAsync } from '../noti
 import { useRouter } from 'expo-router';
 import { FeedData } from '@/classes/FeedData';
 
-type FeedItemData = {
-  caption: string,
-  bpm: number
-  brain_freq: number,
-  user: User
-}
-
 type User = {
   profile_pic: string,
   name: string
@@ -82,7 +75,7 @@ export default function ScrollableComponent() {
           item.front_camera,  
           item.heartrate, 
           undefined,         
-          sample_user        
+          sample_user
         );
       });
 
