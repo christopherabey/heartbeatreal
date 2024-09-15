@@ -32,9 +32,11 @@ export default function PhotoTaker() {
     },
   });
 
-  const uploadImageToS3 = async (imageUriFront: string, imageUriBack: string) => {
+  const uploadImageToS3 = async (
+    imageUriFront: string,
+    imageUriBack: string
+  ) => {
     try {
-      // Fetch both images as blobs simultaneously
       const [responseFront, responseBack] = await Promise.all([
         fetch(imageUriFront),
         fetch(imageUriBack),
@@ -45,34 +47,30 @@ export default function PhotoTaker() {
         responseBack.blob(),
       ]);
 
-      // Set up S3 params for front and back images
       const paramsFront = {
         Bucket: "heartbeatreal",
         Key: `pictures/front-${Date.now()}.jpg`,
         Body: blobFront,
-        ContentType: "image/jpeg", // Adjust content type as needed
+        ContentType: "image/jpeg",
       };
 
       const paramsBack = {
         Bucket: "heartbeatreal",
         Key: `pictures/back-${Date.now()}.jpg`,
         Body: blobBack,
-        ContentType: "image/jpeg", // Adjust content type as needed
+        ContentType: "image/jpeg",
       };
 
-      // Upload both images to S3 simultaneously
-      const [commandFront, commandBack] = await Promise.all([
+      await Promise.all([
         s3.send(new PutObjectCommand(paramsFront)),
         s3.send(new PutObjectCommand(paramsBack)),
       ]);
 
       console.log("Both images uploaded successfully!");
 
-      // Construct S3 URLs
       const s3UrlFront = `https://${paramsFront.Bucket}.s3.us-west-2.amazonaws.com/${paramsFront.Key}`;
       const s3UrlBack = `https://${paramsBack.Bucket}.s3.us-west-2.amazonaws.com/${paramsBack.Key}`;
 
-      // Post both S3 URLs to your server or API
       const postResponse = await fetch(
         "https://heartbereal.onrender.com/record_heartbeat",
         {
@@ -133,15 +131,16 @@ export default function PhotoTaker() {
       const photoData = await cameraRef.current.takePictureAsync(options);
       if (type === CameraType.back) {
         setBackPhoto(photoData.uri);
-        uploadImageToS3(photoData.uri, "back");
         setType(CameraType.front);
+        // Wait to capture front photo after capturing back photo
+        await takePhoto(CameraType.front);
       } else {
         setFrontPhoto(photoData.uri);
-        uploadImageToS3(photoData.uri, "front");
-        setType(CameraType.back);
+        // Only upload once both photos are captured
+        if (frontPhoto && backPhoto) {
+          await uploadImageToS3(frontPhoto, backPhoto);
+        }
       }
-
-      uploadImageToS3(frontPhoto!, backPhoto!);
     }
   };
 
@@ -233,11 +232,8 @@ export default function PhotoTaker() {
                 right: 20,
               }}
             >
-              <TouchableOpacity onPress={()=>{uploadImageToS3(frontPhoto, backPhoto)}}>
-                <TabBarIcon
-                  name={"checkmark-done"}
-                  color={"#fff"}
-                />
+              <TouchableOpacity onPress={toggleCameraType}>
+                <TabBarIcon name={"checkmark-done"} color={"#fff"} />
               </TouchableOpacity>
             </View>
 
