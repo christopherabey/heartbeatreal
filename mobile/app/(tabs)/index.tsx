@@ -75,14 +75,13 @@ export default function ScrollableComponent() {
   const pfp = require("../../assets/images/profile/shaun.jpeg");
   const sample_user = {
     profile_pic: pfp,
-    name: "Sarina Li",
-  };
+    name: "Sarina Li"
+  }
 
   let config = {
-    method: "post",
-    maxBodyLength: Infinity,
-    url: "https://heartbereal.onrender.com/get_entries?date=2024-09-14",
-    headers: {},
+    method: 'post',
+    url: 'https://heartbereal.onrender.com/get_entries?date=2024-09-14',
+    headers: { }
   };
 
   useEffect(() => {
