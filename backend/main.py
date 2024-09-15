@@ -43,12 +43,14 @@ def record_heartbeat(date: str, front_camera: str, back_camera: str):
 
 @app.post("/get_insights")
 def get_insights(date: str):
-    result = entry.get_insights(date)['results']['data_array']
-    entries = {}
+    result = entry.get_insights(date)['result']['data_array']
+    entries = []
     for res in result:
-        entries['date'] = res[0]
-        entries['max_heart_rate'] = res[1]
-        entries['total_entries'] = res[2]
+        cur = {}
+        entries.append(cur)
+        cur['date'] = res[0]
+        cur['max_heart_rate'] = res[1]
+        cur['total_entries'] = res[2]
     return entries
 
 
