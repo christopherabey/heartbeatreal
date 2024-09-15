@@ -39,7 +39,7 @@ def record_heartbeat(date: str, front_camera: str, back_camera: str):
     result = entry.add_entry(date, heartrate, caption, front_camera, back_camera)
     if not result:
         return {"error": "Failed to record heartbeat"}
-    return {"caption": caption}
+    return {"caption": caption, "heartrate": heartrate}
 
 @app.post("/get_insights")
 def get_insights(date: str):
