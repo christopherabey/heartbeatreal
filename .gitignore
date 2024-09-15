@@ -4,3 +4,6 @@ venv
 .env
 
 mobile/node_modules
+mobile/android
+mobile/.expo
+mobile/ios

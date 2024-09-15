@@ -10,12 +10,10 @@ import {
   TouchableOpacity,
   View,
   Image,
-  Platform,
 } from "react-native";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { useRouter } from "expo-router";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
-import * as FileSystem from "expo-file-system";
 
 export default function PhotoTaker() {
   const [type, setType] = useState(CameraType.front);
@@ -33,7 +31,7 @@ export default function PhotoTaker() {
     },
   });
 
-  const uploadImageToS3 = async (imageUri, imageType) => {
+  const uploadImageToS3 = async (imageUri: string, imageType: string) => {
     try {
       // Fetch the image as a blob
       const response = await fetch(imageUri);
@@ -170,12 +168,6 @@ export default function PhotoTaker() {
                 <TabBarIcon
                   name={"checkmark-done"}
                   color={"#fff"}
-                  onPress={() => {
-                    router.push({
-                      pathname: "/post",
-                      params: { front: frontPhoto, back: backPhoto },
-                    });
-                  }}
                 />
               </TouchableOpacity>
             </View>

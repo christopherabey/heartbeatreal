@@ -4,7 +4,7 @@ import { StyleSheet, View, Image } from 'react-native';
 export default function BerealLayout({front, back, width, height}: {front: number|string, back: number|string, width: number, height: number}) {
     return (
         <View style={{
-            width: 375,
+            width: width,
             justifyContent: 'center',
             position: 'relative', // Allows absolute positioning of child elements
           }}>

@@ -1,8 +1,8 @@
 
-import PhotoTaker from '@/components/PhotoTaker';
+import { View } from 'react-native';
 
 export default function Profile() {
     return (
-        <PhotoTaker></PhotoTaker>
+        <View></View>
       );
   }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 import { useRouter } from 'expo-router';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import BerealLayout from '@/components/BerealLayout';
 
@@ -48,7 +48,9 @@ export default function Post() {
             alignItems: 'center', 
           }}>
             <BerealLayout front={front.toString()} back={back.toString()} width={375} height={500}></BerealLayout>
-            <Button title="Upload Front Image" onPress={() => uploadFile()} />
+            <TouchableOpacity onPress={() => uploadFile()}>
+                
+            </TouchableOpacity>
             {/* <Text style={{color:"white"}}>Image: {front}</Text>
             <Text style={{color:"white"}}>Image: {back}</Text> */}
         </View>

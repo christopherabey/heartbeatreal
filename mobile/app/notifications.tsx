@@ -3,7 +3,7 @@ import { Text, View, Button, Platform } from 'react-native';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import Constants from 'expo-constants';
-
+import { useRouter } from 'expo-router'; // Import useRouter
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -13,14 +13,12 @@ Notifications.setNotificationHandler({
   }),
 });
 
-
-async function sendPushNotification(expoPushToken: string) {
+export async function sendPushNotification(expoPushToken: string) {
   const message = {
     to: expoPushToken,
     sound: 'default',
-    title: 'Original Title',
-    body: 'And here is the body!',
-    data: { someData: 'goes here' },
+    title: 'ARE YOU STRESSED? 😭',
+    body: 'Time to Brainbeatreal...',
   };
 
   await fetch('https://exp.host/--/api/v2/push/send', {
@@ -34,13 +32,7 @@ async function sendPushNotification(expoPushToken: string) {
   });
 }
 
-
-function handleRegistrationError(errorMessage: string) {
-  alert(errorMessage);
-  throw new Error(errorMessage);
-}
-
-async function registerForPushNotificationsAsync() {
+export async function registerForPushNotificationsAsync() {
   if (Platform.OS === 'android') {
     Notifications.setNotificationChannelAsync('default', {
       name: 'default',
@@ -58,35 +50,29 @@ async function registerForPushNotificationsAsync() {
       finalStatus = status;
     }
     if (finalStatus !== 'granted') {
-      handleRegistrationError('Permission not granted to get push token for push notification!');
+      alert('Failed to get push token for push notification!');
       return;
     }
-    const projectId =
-      Constants?.expoConfig?.extra?.eas?.projectId ?? Constants?.easConfig?.projectId;
+    const projectId = Constants?.expoConfig?.extra?.eas?.projectId ?? Constants?.easConfig?.projectId;
     if (!projectId) {
-      handleRegistrationError('Project ID not found');
+      throw new Error('Project ID not found');
     }
     try {
-      const pushTokenString = (
-        await Notifications.getExpoPushTokenAsync({
-          projectId,
-        })
-      ).data;
-      console.log(pushTokenString);
-      return pushTokenString;
-    } catch (e: unknown) {
-      handleRegistrationError(`${e}`);
+      const token = (await Notifications.getExpoPushTokenAsync({ projectId })).data;
+      console.log(token);
+      return token;
+    } catch (e) {
+      throw new Error('Failed to get push token!');
     }
   } else {
-    handleRegistrationError('Must use physical device for push notifications');
+    alert('Must use physical device for Push Notifications');
   }
 }
 
 export default function App() {
+  const router = useRouter(); // Use Expo Router's useRouter
   const [expoPushToken, setExpoPushToken] = useState('');
-  const [notification, setNotification] = useState<Notifications.Notification | undefined>(
-    undefined
-  );
+  const [notification, setNotification] = useState<Notifications.Notification | undefined>(undefined);
   const notificationListener = useRef<Notifications.Subscription>();
   const responseListener = useRef<Notifications.Subscription>();
 
@@ -100,7 +86,7 @@ export default function App() {
     });
 
     responseListener.current = Notifications.addNotificationResponseReceivedListener(response => {
-      console.log(response);
+      console.log("alsdkfjlaksdjfldksj");
     });
 
     return () => {
@@ -109,7 +95,7 @@ export default function App() {
       responseListener.current &&
         Notifications.removeNotificationSubscription(responseListener.current);
     };
-  }, []);
+  },[]);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-around' }}>
