@@ -14,6 +14,8 @@ Our application monitors your heart rate and brain waves measured by EEG to capt
 
 ## How we built it
 
+![Uploading Screenshot 2024-09-15 at 4.59.25 AM.png…]()
+
 Our application interacts with three physical devices, an Apple watch for heart rate monitoring, the Neurosity crown for brainwave monitoring, and the user facing application on the user’s mobile device. At a certain threshold the Apple watch will send a request to the backend to start the brainbeat recording process, this notification is relayed to the user’s phone which checks and collects the user’s current brainwaves to confirm an interesting event has occurred which triggers the start of taking a brainbeat.
 
 To record a “brainbeat”, the heart rate, brain wave and front/back camera image data is passed into our backend server. The backend server will (1) generate an interesting caption for the images and (2) store and process the data into the database.
