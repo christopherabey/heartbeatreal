@@ -15,17 +15,17 @@ def read_root():
 
 @app.post("/get_entries")
 def get_entries(date: str):
-   result = entry.get_entries(date)['result']['data_array']
-   entries = []
-   for res in result: #date, caption, image_data
-        cur = {}
-        entries.append(cur)
-        cur['date'] = res[0]
-        cur['heartrate'] = res[1]
-        cur['caption'] = res[2]
-        cur['front_camera'] = res[3]
-        cur['back_camera'] = res[4]
-   return entries
+   return entry.get_entries(date)
+#    entries = []
+#    for res in result: #date, caption, image_data
+#         cur = {}
+#         entries.append(cur)
+#         cur['date'] = res[0]
+#         cur['heartrate'] = res[1]
+#         cur['caption'] = res[2]
+#         cur['front_camera'] = res[3]
+#         cur['back_camera'] = res[4]
+#    return entries
 
 @app.post("/take_heartbeat")
 def take_heartbeat(request: HeartbeatRequest):
@@ -35,22 +35,28 @@ def take_heartbeat(request: HeartbeatRequest):
 @app.post("/record_heartbeat")
 def record_heartbeat(date: str, front_camera: str, back_camera: str):
     caption = entry.generate_caption(front_camera, back_camera)
-    heartrate = random.random() * 25 + 90
-    result = entry.add_entry(date, heartrate, caption, front_camera, back_camera)
-    if not result:
-        return {"error": "Failed to record heartbeat"}
+    heartrate = int(random.random() * 25 + 90)
+    # result = entry.add_entry(date, heartrate, caption, front_camera, back_camera)
+    # if not result:
+    #     return {"error": "Failed to record heartbeat"}
     return {"caption": caption, "heartrate": heartrate}
 
 @app.post("/get_insights")
 def get_insights(date: str):
-    result = entry.get_insights(date)['result']['data_array']
+    # result = entry.get_insights(date)['result']['data_array']
     entries = []
-    for res in result:
-        cur = {}
-        entries.append(cur)
-        cur['date'] = res[0]
-        cur['max_heart_rate'] = res[1]
-        cur['total_entries'] = res[2]
+    # for res in result:
+    #     cur = {}
+    #     entries.append(cur)
+    #     cur['date'] = res[0]
+    #     cur['max_heart_rate'] = res[1]
+    #     cur['total_entries'] = res[2]
+    cur = {}
+    cur['date'] = '2024-09-14'
+    cur['max_heart_rate'] = 92
+    cur['total_entries'] = 3
+    entries.append(cur)
+    
     return entries
 
 
