@@ -28,7 +28,7 @@ def get_entries(date: str):
     # Sample: SELECT * FROM heartbeat.default.entries WHERE date == '2024-09-14'
     payload = {}
     payload['warehouse_id'] = '360d9dd238bf069f'
-    payload['statement'] = f"SELECT * FROM heartbeat.default.entries WHERE date == '{date}'"
+    payload['statement'] = f"SELECT * FROM heartbeat.default.heartbeat WHERE date == '{date}'"
     payload['wait_timeout'] = '30s'
     response = requests.request("POST", url, headers=headers_db, data=json.dumps(payload))
     return json.loads(response.text)

@@ -14,7 +14,7 @@ def read_root():
 
 @app.post("/get_entries")
 def get_entries(date: str):
-   result = entry.get_entries(date)['results']['data_array']
+   result = entry.get_entries(date)['result']['data_array']
    entries = {}
    for res in result: #date, caption, image_data
         entries['date'] = res[0]
@@ -23,6 +23,7 @@ def get_entries(date: str):
         entries['front_camera'] = res[3]
         entries['back_camera'] = res[4]
    return entries
+   return result
 
 @app.post("/take_heartbeat")
 def take_heartbeat(request: HeartbeatRequest):
