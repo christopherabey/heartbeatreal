@@ -64,10 +64,9 @@ export default function ScrollableComponent() {
     profile_pic: pfp,
     name: "Sarina Li"
   }
-  
+
   let config = {
     method: 'post',
-    maxBodyLength: Infinity,
     url: 'https://heartbereal.onrender.com/get_entries?date=2024-09-14',
     headers: { }
   };

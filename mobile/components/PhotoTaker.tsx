@@ -136,10 +136,11 @@ export default function PhotoTaker() {
         await takePhoto(CameraType.front);
       } else {
         setFrontPhoto(photoData.uri);
+        setType(CameraType.back);
         // Only upload once both photos are captured
-        if (frontPhoto && backPhoto) {
-          await uploadImageToS3(frontPhoto, backPhoto);
-        }
+      }
+      if (frontPhoto && backPhoto) {
+        await uploadImageToS3(frontPhoto, backPhoto);
       }
     }
   };
