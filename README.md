@@ -1,4 +1,4 @@
-# heartbereal
+# HeartBeatReal
 
 Hack the North 2024
 
